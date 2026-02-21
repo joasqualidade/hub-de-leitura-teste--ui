@@ -26,7 +26,7 @@ beforeEach(() => {
 
     });
 
-    it.only('Deve clicar no terceiro botão Adicionar à cesta', () => {
+    it('Deve clicar no terceiro botão Adicionar à cesta', () => {
         cy.get('.btn-primary').eq(2).click()
 
     });

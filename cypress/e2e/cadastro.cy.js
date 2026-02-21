@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { faker } from '@faker-js/faker';
+import { fa, faker } from '@faker-js/faker';
 
 describe('Funcionalidade: cadastro no Hub de leitura', () => {
 
@@ -37,5 +37,25 @@ describe('Funcionalidade: cadastro no Hub de leitura', () => {
 
     })
 
-    
+    it('Deve preencher cadastro com sucesso, usando comando customizado', () => {
+        let email = faker.internet.email()
+        let name = faker.person.fullName() 
+        let contato = faker.phone.number('119########')
+        let senha = faker.internet.password()
+        cy.preencherCadastro(name, email, contato, senha, senha)
+
+    });
+
+    it('Deve exibir mensagem de erro ao tentar cadastrar com email já existente', () => {
+        let email = 'jose.nagao@outlook.com'
+        cy.get('#name').type('Jôas Nagao')
+        cy.get('#email').type(email)
+        cy.get('#phone').type('11999999999')
+        cy.get('#password').type('123456')
+        cy.get('#confirm-password').type('123456')
+        cy.get('#terms-agreement').check()
+        cy.get('#register-btn').click()
+        cy.get('#alert-container').should('be.visible', 'Erro ao criar conta. Tente novamente.')
+        //resultado esperado: exibir mensagem de erro')
+    });
 });

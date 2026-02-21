@@ -1,0 +1,17 @@
+[
+    {
+        "livro": "1984",
+        "autor": "George Orwell",
+        "genero": "ficção"
+    },
+    {
+        "livro": "Dom Quixote",
+        "autor": "Miguel de Cervantes",
+        "genero": "Romance"
+    },
+    {
+        "livro": "O Hobbit",
+        "autor": "J.R.R. Tolkien",
+        "genero": "Aventura"
+    }
+]
