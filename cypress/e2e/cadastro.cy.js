@@ -1,13 +1,18 @@
 /// <reference types="cypress" />
 import { fa, faker } from '@faker-js/faker';
+import cadastroPage from '../support/pages/cadastro-page';
 
 describe('Funcionalidade: cadastro no Hub de leitura', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000/register.html')
+        cadastroPage.visitarPaginaCadastro()
     });
 
-    it('Deve realizar cadastro com sucesso, usando JS', () => {
+    afterEach(() => {
+        cy.screenshot()
+    });
+
+    it.only('Deve realizar cadastro com sucesso, usando JS', () => {
         let email = `testes${Date.now()}@outlook.com`
         cy.get('#name').type('Jôas Nagao')
         cy.get('#email').type(email)
@@ -16,6 +21,7 @@ describe('Funcionalidade: cadastro no Hub de leitura', () => {
         cy.get('#confirm-password').type('123456')
         cy.get('#terms-agreement').check()
         cy.get('#register-btn').click()
+        cy.url().should('include', 'dashboard')
         //resultado esperado: exibir mensagem de sucesso
         
 
@@ -58,4 +64,15 @@ describe('Funcionalidade: cadastro no Hub de leitura', () => {
         cy.get('#alert-container').should('be.visible', 'Erro ao criar conta. Tente novamente.')
         //resultado esperado: exibir mensagem de erro')
     });
+
+
+    it('Deve fazer cadastro com sucesso - usando Page Object', () => {
+        let email = faker.internet.email()
+        cadastroPage.preencherCadastro('Jôas Nagao', email, '11999999999', '123456', '123456')
+        cy.url().should('include', 'dashboard')
+
+    });
+
+    
+    
 });
