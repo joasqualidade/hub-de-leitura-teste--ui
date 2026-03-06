@@ -25,8 +25,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-Cypress.Commands.add('login', (email, senha) => { 
-    cy.get('#email').type(email, { log: false }) // Esconde o email nos logs do Cypress 
+/*Cypress.Commands.add('login', (email, senha) => { 
+   cy.get('#email').type(email, { log: false }) // Esconde o email nos logs do Cypress 
     cy.get('#password').type(senha, { log: false }) // Esconde a senha nos logs do Cypress
     cy.get('#login-btn').click()
     cy.url().should('include', 'dashboard')
@@ -43,4 +43,4 @@ Cypress.Commands.add('login', (email, senha) => {
     cy.get('#register-btn').click()
     //resultado esperado: exibir mensagem de sucesso
 
- })
+ }) */
